@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "test:api": "npx playwright test --config=playwright-api.config.ts",
     "pretty": "npx prettier --write ."
   },
   "keywords": [],
