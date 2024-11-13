@@ -5,6 +5,7 @@ Positive Scenarios
  - Valid Expression Without Precision
  - Valid Expression With Precision
  - Boundary Values for Precision ("preciosion" <= 0 or "preciosion" >= 100)
+ - Testing mathematical operations
 
 Negative Scenarios
  - Missing Mandatory expr Parameter 
@@ -16,6 +17,7 @@ Positive Scenarios
  - Single Valid Expression Without Precision
  - Single Valid Expression With Precision
  - Array of Valid Expressions
+ - Testing mathematical operations
 
 Negative Scenarios
  - Invalid Expression in Array(e.g division by 0)
@@ -23,7 +25,21 @@ Negative Scenarios
  - Invalid Precision Format ("precision": "abc" )
 
 # api-task with Postman
-In the `./postman` folder required API tests can be found. As well as pre-configured .csv collections to support data-driven testing.
+In the `./postman` folder required API tests can be found. As well as pre-configured .csv collections to support data-driven testing. 
+
+Test Colletion includes 3 sets of tests
+
+GET Endpoint (Positive and Negative scenarios)
+- Endpoint parameters are set as variables 
+- Tests are designed to be run from .csv file input (please find attached inside Postman folder under corresponding name)
+
+POST Endpoint 
+Please note that POST endpoint coverage in Postman includes only positive scenarios, however with Axios, both positive and negatives are covered.
+- Base url is set as variable
+- Tests arer designed to be run from .csv file input (please find attached inside Postman folder under corresponding name)
+
+Scope
+The focus of this testing effort was not on validating the correctness of mathematical operations themselves but on ensuring proper handling of input validation and basic operation handling. 
 
 # api-task with Axios 
 In the `./tests/api-tests` directory, you will find a replicated set of test cases that were initially created in Postman. Due to Postman's limitations and time constraints, the decision was made to move tests in Axios for more flexibility and faster execution.
