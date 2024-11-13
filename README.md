@@ -1,6 +1,6 @@
 # Testing Checklist
 
-GET Endpoint
+### GET Endpoint
 Positive Scenarios
  - Valid Expression Without Precision
  - Valid Expression With Precision
@@ -12,7 +12,7 @@ Negative Scenarios
  - Invalid expr Parameter (e.g division by 0)
  - Invalid Precision Value (e.g text)
 
-POST Endpoint
+### POST Endpoint
 Positive Scenarios
  - Single Valid Expression Without Precision
  - Single Valid Expression With Precision
@@ -29,16 +29,16 @@ In the `./postman` folder required API tests can be found. As well as pre-config
 
 Test Colletion includes 3 sets of tests
 
-GET Endpoint (Positive and Negative scenarios)
+### GET Endpoint (Positive and Negative scenarios)
 - Endpoint parameters are set as variables 
 - Tests are designed to be run from .csv file input (please find attached inside Postman folder under corresponding name)
 
-POST Endpoint 
+### POST Endpoint 
 Please note that POST endpoint coverage in Postman includes only positive scenarios, however with Axios, both positive and negatives are covered.
 - Base url is set as variable
 - Tests arer designed to be run from .csv file input (please find attached inside Postman folder under corresponding name)
 
-Scope
+### Scope
 The focus of this testing effort was not on validating the correctness of mathematical operations themselves but on ensuring proper handling of input validation and basic operation handling. 
 
 # api-task with Axios 
@@ -57,7 +57,7 @@ Test configuration for API tests is in `playwright-api.config.ts`
 3. Run API Tests
 `npm run test:api`
 
-Note on Test Behavior
+### Note on Test Behavior
 Please be aware that the tested API endpoints sometimes return unconventional error responses. For instance, instead of returning a 400 Bad Request for division by zero, the endpoint returns 200. API tests are designed to validate more conventional behavior, so certain tests may fail intentionally to highlight discrepancies.
 
 # ui-task with Playwright 
