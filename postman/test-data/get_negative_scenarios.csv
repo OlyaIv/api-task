@@ -1,0 +1,4 @@
+expr,result
+8/(10-10),Infinity
+,undefined
+some text,Error

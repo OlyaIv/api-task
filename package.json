@@ -1,0 +1,25 @@
+{
+  "name": "api-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:api": "npx playwright test --config=playwright-api.config.ts",
+    "pretty": "npx prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "1.48.2",
+    "@types/node": "22.9.0",
+    "prettier": "3.3.3"
+  },
+  "dependencies": {
+    "@types/papaparse": "5.3.15",
+    "axios": "1.7.7",
+    "csv-parser": "3.0.0",
+    "papaparse": "5.4.1"
+  }
+}

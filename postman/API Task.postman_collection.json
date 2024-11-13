@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "35f30f7f-f331-4620-9144-f0ece7e32b77",
+		"name": "API Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get math expression Positive",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"expr\", data.expr)",
+							"pm.environment.set(\"result\", data.result)",
+							"pm.environment.set(\"precision\", data.precision)",
+							"",
+							"let mathExpr = pm.environment.get(\"expr\")",
+							"let encodedExpr = encodeURIComponent(mathExpr)",
+							"let precision = pm.environment.get(\"precision\")",
+							"",
+							"pm.request.url = pm.request.url.toString().replace(\"{{expr}}\", encodedExpr);",
+							"pm.request.url = pm.request.url.toString().replace(\"{{precision}}\", precision);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let result = pm.environment.get(\"result\")",
+							"",
+							"pm.test(\"Expression results are correct\", function () {",
+							"    pm.expect(pm.response.text()).to.include(result);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?expr={{expr}}&precision={{precision}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "expr",
+							"value": "{{expr}}"
+						},
+						{
+							"key": "precision",
+							"value": "{{precision}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get math expression Negative",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"expr\", data.expr)",
+							"pm.environment.set(\"result\", data.result)",
+							"",
+							"let mathExpr = pm.environment.get(\"expr\")",
+							"let encodedExpr = encodeURIComponent(mathExpr)",
+							"",
+							"pm.request.url = pm.request.url.toString().replace(\"{{expr}}\", encodedExpr);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let result = pm.environment.get(\"result\")",
+							"",
+							"pm.test(\"Expression results are correct\", function () {",
+							"    pm.expect(pm.response.text()).to.include(result);",
+							"});",
+							"",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?expr={{expr}}&precision={{precision}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "expr",
+							"value": "{{expr}}"
+						},
+						{
+							"key": "precision",
+							"value": "{{precision}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post math expression",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"exprArr\", data.exprArr)",
+							"pm.environment.set(\"result\", data.result)",
+							"pm.environment.set(\"precision\", data.precision)",
+							"",
+							"pm.environment.get(\"exprArr\")",
+							"pm.environment.get(\"precision\")",
+							"",
+							"// pm.request.url = pm.request.url.toString().replace(\"{{expr}}\", encodedExpr);",
+							"// pm.request.url = pm.request.url.toString().replace(\"{{precision}}\", precision);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let result = pm.environment.get(\"result\")",
+							"",
+							"pm.test(\"Expression results are correct\", function () {",
+							"    pm.expect(pm.response.text()).to.include(result);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"expr\": {{exprArr}},\n    \"precision\":{{precision}}\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}",
+					"host": [
+						"{{baseUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "expr",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "precision",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://api.mathjs.org/v4/",
+			"type": "default"
+		},
+		{
+			"key": "exprArr",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "result",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
